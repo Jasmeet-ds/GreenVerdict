@@ -1,0 +1,11 @@
+*.csv
+.DS_Store
+__pycache__/
+.ipynb_checkpoints/
+node_modules/
+.env
+*.ipynb
+*.pdf
+*.docx
+*.html
+esg_reports/
