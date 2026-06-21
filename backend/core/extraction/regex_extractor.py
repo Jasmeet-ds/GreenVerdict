@@ -11,5 +11,13 @@ if __name__ == "__main__":
       index, texts = build_index(chunks)
       query = input("metric: ")
       results = retrieve(query, index, texts)
-      extracted = extract_metric(results)  
+      print("\nRetrieved Chunks:\n")
+
+      for i, chunk in enumerate(results):
+            print(f"Chunk {i+1}")
+            print(chunk[:500])
+            print("\n" + "="*50 + "\n")
+            
+      extracted = extract_metric(results) 
+
       print(extracted)
