@@ -58,7 +58,20 @@ def metric_extraction(index, texts):
         )
 
         result_text = response.choices[0].message.content
-        results.append(result_text)
+
+        if result_text.startswith("```"):
+            result_text = result_text.replace("```json", "").replace("```", "").strip()
+        
+        try:
+            metrics = json.loads(result_text)
+            results.extend(metrics)
+        except json.JSONDecodeError:
+            print(f"Couldn't parse JSON for query: {query}")
+
+    
+    output_path = Path(__file__).resolve().parent / "metrics.json"
+    with open(output_path, "w") as f:
+      json.dump(results, f, indent=4)
 
     return results
 

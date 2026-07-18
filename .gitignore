@@ -9,3 +9,4 @@ node_modules/
 *.docx
 *.html
 esg_reports/
+backend/core/extraction/metrics.json
